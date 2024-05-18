@@ -14,12 +14,9 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
         else:
-            kwargs["created_at"] = datetime.strptime(kwargs["created_at"] ,"%Y-%m-%dT%H:%M:%S.%f")
-            kwargs["updated_at"] = datetime.strptime(kwargs["updated_at"] ,"%Y-%m-%dT%H:%M:%S.%f")
+            kwargs
 
-            for key, value in kwargs.items():
-                if "__class__" not in key:
-                    setattr(self, key, value)
+
     ''' 
         returns the string representation of the class
     '''
