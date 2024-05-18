@@ -44,13 +44,3 @@ class BaseModel:
             return "Error: Instance has no attributes"
         return newDict
 
-
-'''
-    FOR TESTING 
-'''
-# user1 = BaseModel("George", created_at=datetime.now())
-#
-# if __name__ == "__main__":
-#     print(user1)
-#     print(user1.to_dict())
-#     # print(user1.save())
