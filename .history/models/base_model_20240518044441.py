@@ -43,3 +43,4 @@ class BaseModel:
         else:
             return "Error: Instance has no attributes"
         return newDict
+
