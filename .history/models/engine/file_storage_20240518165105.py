@@ -1,0 +1,7 @@
+
+''' 
+    FileStorage  class
+'''
+class FileStorage :
+    __file__path = string
+    __objects
