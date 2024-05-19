@@ -1,4 +1,0 @@
-
-''' 
-    FileStorage  class
-'''
