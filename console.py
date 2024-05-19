@@ -37,7 +37,16 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """EOF: end of file- Exits the program"""
+        print("")
         return True
+
+    def emptyline(self, arg):
+        """Overides the built in command for handling empty lines"""
+        pass
+
+    def do_help(self, arg):
+        """To get help on a command type help <command>"""
+        return super().do_help(arg)
 
 
 if __name__ == '__main__':
