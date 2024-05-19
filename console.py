@@ -1,6 +1,11 @@
 #!/usr/bin/python3
+"""
+This python module defines a simple command interpreter to be used as 
+a console for managing the AirBnB project
+"""
 import cmd
 import re
+from models import storage
 class HBNBCommand(cmd.Cmd):
     """Class for the cmd functions"""
     prompt = "(hbnb) "
@@ -8,12 +13,12 @@ class HBNBCommand(cmd.Cmd):
         """Handles what happens before the line on the command line is read"""
         if not line:
             return '\n'
-        pattern = re.compile(r"(\w+)\.(\w+)\((.*)\)")
-        match_list = pattern.findall(line)
-        if not match_list:
+        linePattern = re.compile(r"(\w+)\.(\w+)\((.*)\)")
+        list_match = linePattern.findall(line)
+        if not list_match:
             return super().precmd(line)
 
-        match_tuple = match_list[0]
+        match_tuple = list_match[0]
         if not match_tuple[2]:
             if match_tuple[1] == "count":
                 instance_objs = storage.all()
@@ -22,12 +27,11 @@ class HBNBCommand(cmd.Cmd):
                     if type(v).__name__ == match_tuple[0]]))
                 return "\n"
             return "{} {}".format(match_tuple[1], match_tuple[0])
-        else:
-            def do_quit(self,arg):
-                """quit: Exits the terminal"""
-                return True
-            def do_EOF(self,arg):
-                """EOF: end of file- Exits the program"""
-                return True
+    def do_quit(self,arg):
+        """quit: Terminates the terminal"""
+        return True
+    def do_EOF(self,arg):
+        """EOF: end of file- Exits the program"""
+        return True
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
