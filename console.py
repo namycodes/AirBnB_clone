@@ -22,15 +22,32 @@ class HBNBCommand(cmd.Cmd):
         list_match = linePattern.findall(line)
         if not list_match:
             return super().precmd(line)
-        match_tuple = list_match[0]
-        if not match_tuple[2]:
-            if match_tuple[1] == "count":
+        tuple_matcher = list_match[0]
+        if not tuple_matcher[2]:
+            if tuple_matcher[1] == "count":
                 instance_objs = storage.all()
                 print(len([
                     v for _, v in instance_objs.items()
-                    if type(v).__name__ == match_tuple[0]]))
+                    if type(v).__name__ == tuple_matcher[0]]))
                 return "\n"
-            return "{} {}".format(match_tuple[1], match_tuple[0])
+            return "{} {}".format(tuple_matcher[1], tuple_matcher[0])
+        else:
+            args = tuple_matcher[2].split(", ")
+            if len(args) == 1:
+                return "{} {} {}".format(
+                    tuple_matcher[1], tuple_matcher[0],
+                    re.sub("[\"\']", "", tuple_matcher[2]))
+            else:
+                match_json = re.findall(r"{.*}", tuple_matcher[2])
+                if (match_json):
+                    return "{} {} {} {}".format(
+                        tuple_matcher[1], tuple_matcher[0],
+                        re.sub("[\"\']", "", args[0]),
+                        re.sub("\'", "\"", match_json[0]))
+                return "{} {} {} {} {}".format(
+                    tuple_matcher[1], tuple_matcher[0],
+                    re.sub("[\"\']", "", args[0]),
+                    re.sub("[\"\']", "", args[1]), args[2])
 
     def do_quit(self, arg):
         """quit: Terminates the terminal"""
