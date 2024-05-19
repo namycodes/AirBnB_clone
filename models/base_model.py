@@ -8,7 +8,7 @@ import models
 class BaseModel:
 
     # class constructor/initializer
-    def __init__(self, *args, **kwargs):
+    def __init__(self, **kwargs):
 
         if len(kwargs) == 0:
             self.id = str(uuid4())

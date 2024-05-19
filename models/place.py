@@ -6,7 +6,7 @@ from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    #Public attributes
+    # Public attributes
 
     city_id = ""
     user_id = ""
