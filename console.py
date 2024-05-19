@@ -1,16 +1,18 @@
 #!/usr/bin/python3
 """
-This python module defines a simple command interpreter to be used as 
-a console for managing the AirBnB project
+This python module defines a simple command interpreter to be used as a console for managing the AirBnB project
 """
 import cmd
 import re
 from models import storage
 class HBNBCommand(cmd.Cmd):
     """Class for the cmd functions"""
+
     prompt = "(hbnb) "
+
     def precmd(self,line):
         """Handles what happens before the line on the command line is read"""
+        
         if not line:
             return '\n'
         linePattern = re.compile(r"(\w+)\.(\w+)\((.*)\)")
