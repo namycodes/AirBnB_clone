@@ -15,7 +15,6 @@ class HBNBCommand(cmd.Cmd):
 
     def precmd(self, line):
         """Handles what happens before the line on the command line is read"""
-        
         if not line:
             return '\n'
         linePattern = re.compile(r"(\w+)\.(\w+)\((.*)\)")
