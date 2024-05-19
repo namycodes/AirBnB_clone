@@ -1,4 +1,0 @@
-
-''' 
-    Ftorage class
-'''
