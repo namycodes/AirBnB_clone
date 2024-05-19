@@ -1,11 +1,12 @@
 #!/usr/bin/emv python3
+
 from models.base_model import BaseModel
 
+''' public attributes class '''
 
-''' public attributes class'''
 
 class User(BaseModel):
-    # public attributes class'''
+    # public attributes class
 
     email = ""
     password = ""

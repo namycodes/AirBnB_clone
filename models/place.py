@@ -1,14 +1,13 @@
 #!/usr/bin/python3
-'''
-    Place Class
-'''
+
 from models.base_model import BaseModel
+
+''' Place Class'''
 
 
 class Place(BaseModel):
-    '''
-        Public attributes
-    '''
+    #Public attributes
+
     city_id = ""
     user_id = ""
     name = ""
