@@ -6,7 +6,18 @@ to be used as a console for managing the AirBnB project
 import cmd
 import re
 from models import storage
+from models.review import Review
+from models.place import Place
+from models.city import City
+from models.state import State
+from models.user import User
+from models.amenity import Amenity
+from models import BaseModel
 
+
+available_classes = {'BaseModel': BaseModel, 'User': User,
+                   'Amenity': Amenity, 'City': City, 'State': State,
+                   'Place': Place, 'Review': Review}
 
 class HBNBCommand(cmd.Cmd):
     """Class for the cmd functions"""
@@ -64,6 +75,37 @@ class HBNBCommand(cmd.Cmd):
     def do_help(self, arg):
         """To get help on a command type help <command>"""
         return super().do_help(arg)
+    
+    def do_create(self, arg):
+        if not arg:
+            print("** class name missing **")
+        else:
+            try:
+                new_obj = available_classes[arg]()
+                new_obj.save()
+                print(new_obj.id)
+            except KeyError:
+                print("** class doesn't exist **")
+
+    def do_show(self,arg):
+        """Prints string representation on an instance"""
+        args = arg.split()
+        if len(args) < 1:
+            print("** class name missing **")
+            return False
+        if args[0] not in available_classes.keys():
+            print("** class doesn't exist **")
+            return False
+        if len(args) < 2 and args[1]:
+            print("** instance id missing **")
+            return False
+        instance_objs = storage.all()
+        key = "{}.{}".format(args[0], args[1])
+        req_instance = instance_objs.get(key, None)
+        if req_instance is None:
+            print("** no instance found **")
+            return
+        print(req_instance)
 
 
 if __name__ == '__main__':
