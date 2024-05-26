@@ -1,4 +1,5 @@
 /* filter */
+
 .filters{
     position: relative;
     background-color: white;
@@ -8,9 +9,39 @@
     border-radius: 4px;
     display: flex;
     align-items: center;
-    /* justify-content: flex-end; */
 }
 
+/* filter location && amenities */
+.locations,
+.amenities{
+    height: 100%;
+    width: 25%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.filters div:first-child{
+    border-right: 1px solid #DDDDDD;
+}
+
+h3
+{
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+h4
+{
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+/* filter search button */
 .filters button{
     font-size: 18px;
     background-color: #FF5A5F;
@@ -22,9 +53,6 @@
     position: absolute;
     right: 30px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .filters button:hover{
